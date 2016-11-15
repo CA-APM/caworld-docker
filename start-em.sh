@@ -25,6 +25,9 @@ cp CAAPMDockerMonitor/em/em-jetty-config.xml $EM_HOME/config/em-jetty-config.xml
   sed -i 's/#introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/' ${EM_HOME}/config/IntroscopeEnterpriseManager.properties
   keytool -importcert -noprompt -keystore keystore -alias jettyssl -file ${EM_HOME}/config/internal/server/jettyssl.crt -storepass password
 
+# fix hostname resolution
+sed -Ei 's/hosts:      files dns myhostname/hosts:      myhostname files dns/' /etc/nsswitch.conf
+
 # start EM and WebView
 echo "Starting Enterprise Manager and WebView"
 service em start
