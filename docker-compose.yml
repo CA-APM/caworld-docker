@@ -1,0 +1,50 @@
+#
+# Description:
+# ------------
+#
+# This is a small test case for the MathApp application.
+#
+
+version: '2'
+services:
+  lb:
+    image: dockercloud/haproxy
+    links:
+      - mathclient
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "80:80"
+
+  math_client:
+    image: mathapp_client
+    links:
+      - math_proxy
+    environment:
+      - HEAP="2048m"
+      - EM_HOST=192.168.10.50
+    hostname: math_client
+
+  math_proxy:
+    image: mathapp_proxy
+    links:
+      - math_simple_backend
+      - math_complex_backend
+    environment:
+      - HEAP="2048m"
+      - EM_HOST=192.168.10.50
+    hostname: math_proxy
+
+  math_simple_backend:
+    image: mathapp_simple_backend
+    environment:
+      - HEAP="2048m"
+      - EM_HOST=192.168.10.50
+    hostname: math_simple_backend
+
+  math_complex_backend:
+    image: math_complex_backend
+    environment:
+      - HEAP="2048m"
+      - EM_HOST=192.168.10.50
+    hostname: math_complex_backend
