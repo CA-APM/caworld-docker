@@ -14,7 +14,8 @@ ADD $AGENT_TAR $CATALINA_HOME
 
 # install mathapp application
 COPY MathProxy.war $CATALINA_HOME/webapps/
-RUN unzip -d MathProxy MathProxy.war \
+RUN cd webapps \
+  && unzip -d MathProxy MathProxy.war \
   && sed -Ei "s/simpleport=.*/simpleport=8080/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
   && sed -Ei "s/simplehost=.*/simplehost=mathsimplebackend/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
   && sed -Ei "s/complexport=.*/complexport=8080/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \

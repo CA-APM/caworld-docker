@@ -14,7 +14,8 @@ ADD $AGENT_TAR $CATALINA_HOME
 
 # install mathapp application
 COPY MathClient.war $CATALINA_HOME/webapps/
-RUN unzip -d MathClient MathClient.war \
+RUN cd webapps \
+  && unzip -d MathClient MathClient.war \
   && sed -Ei "s/port=.*/port=8080/" $CATALINA_HOME/webapps/MathClient/WEB-INF/classes/mathapp.properties \
   && sed -Ei "s/host=.*/host=mathproxy/" $CATALINA_HOME/webapps/MathClient/WEB-INF/classes/mathapp.properties \
   && rm MathClient.war
