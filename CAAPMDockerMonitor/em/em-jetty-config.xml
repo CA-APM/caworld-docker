@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- =============================================================== -->
+<!-- Configure the embedded Jetty Server in the EM                   -->
+<!-- =============================================================== -->
+<Configure id="Server" class="org.mortbay.jetty.Server">
+
+  <!-- Configure secure https listener for the Jetty Server -->
+  <!-- using an extension of org.mortbay.jetty.security.SslSocketConnector -->
+  <!-- that can be configured to accept self-signed certificates and not verify that -->
+  <!-- the host name in the client's URL matches the host name in the digital certificate.  -->
+  <!-- To require trusted certificates, set validateCertificates to true -->
+  <!-- To verify host names, set verifyHostnames to true -->
+  <!-- To require client authentication, set needClientAuth to true, -->
+  <!-- set validateCertificates to true, and set truststore to the location -->
+  <!-- of a truststore containing the client's certificates. -->
+  <!-- To set the enabled cipher suites, set cipherSuites to an array of cipher suites -->
+  <!-- If you declare more than one SSL connector make sure that connector used  -->
+  <!-- for communication with Agents is declared first -->
+  <Call name="addConnector">
+    <Arg>
+      <New class="com.wily.webserver.TrustingSslSocketConnector">
+        <Set name="validateCertificates">false</Set>
+        <Set name="HeaderBufferSize">8192</Set>
+        <Set name="RequestBufferSize">16384</Set>
+        <Set name="verifyHostnames">false</Set>
+        <Set name="port">8444</Set>
+        <Set name="certAlias">jettyssl</Set>
+        <Set name="keystore"><SystemProperty name="introscope.config" default="./config" />/internal/server/keystore</Set>
+        <Set name="password">password</Set>
+        <Set name="keyPassword">password</Set>
+        <Set name="truststore"><SystemProperty name="introscope.config" default="./config" />/internal/server/keystore</Set>
+        <Set name="trustPassword">password</Set>
+        <Set name="needClientAuth">false</Set>
+        <!--
+        <Set name="cipherSuites">
+          <Array type="java.lang.String">
+            <Item>SSL_DH_anon_WITH_RC4_128_MD5</Item>
+          </Array>
+        </Set>
+        -->
+        <!-- List of accepted protocols. You can add or remove any individual protocols (under <Item>) but do not comment out the whole set as EM start up will fail -->
+		    <!-- SSLv2Hello can be added for compatibility purpose when using SUN/Oracle JVM-->
+		    <!-- SSLv2Hello is not an accepted protocol for IBM JVM. Use SSL instead of SSLv2Hello if using IBM JVM -->
+		    <!-- IBM JVM  also provides the following protocols which can be added below: SSL_TLSv2, SSL_TLS, SSL -->
+		    <!--
+        <Set name="protocols">
+          <Array type="java.lang.String">
+            <Item>TLSv1.2</Item>
+            <Item>TLSv1.1</Item>
+            <Item>TLSv1</Item>
+          </Array>
+        </Set>
+        -->
+        <Set name="ThreadPool">
+          <New class="org.mortbay.thread.BoundedThreadPool">
+            <Set name="minThreads">3</Set>
+            <Set name="maxThreads">100</Set>
+            <Set name="maxIdleTimeMs">60000</Set>
+         </New>
+        </Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <Set name="SendServerVersion">false</Set>
+
+  <!-- Configure non-secure http listener for the Jetty Server -->
+  <!-- using an extension of org.mortbay.jetty.bio.SocketConnector -->
+  <!-- that doesn't throw NPE on EM shutdown -->
+  <Call name="addConnector">
+    <Arg>
+      <New class="com.wily.webserver.NoNPESocketConnector">
+        <Set name="port">8081</Set>
+        <Set name="HeaderBufferSize">8192</Set>
+        <Set name="RequestBufferSize">16384</Set>
+        <Set name="ThreadPool">
+          <New class="org.mortbay.thread.BoundedThreadPool">
+            <Set name="minThreads">10</Set>
+            <Set name="maxThreads">100</Set>
+            <Set name="maxIdleTimeMs">60000</Set>
+          </New>
+        </Set>
+      </New>
+    </Arg>
+  </Call>
+</Configure>

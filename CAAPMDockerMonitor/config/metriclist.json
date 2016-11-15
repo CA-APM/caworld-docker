@@ -1,0 +1,288 @@
+[
+{
+	"name":"KernelVersion"
+	
+},
+
+{
+	"name":"Data Space Used",
+	"Type":"Integer",
+	"alias":"Data Space Used (in GB)"
+},
+
+
+{
+	"name":"Data Space Total",
+	"Type":"Integer",
+	"alias":"Data Space Total (in GB)"
+},
+
+{
+	"name":"Data Space Available",
+	"Type":"Integer",
+	"alias":"Data Space Available (in GB)"
+	
+},
+
+{
+	"name":"Metadata Space Used",
+	"Type":"Integer",
+	"alias":"Metadata Space Used (in MB)"
+	
+},
+
+{
+	"name":"Metadata Space Total",
+	"Type":"Integer",
+	"alias":"Metadata Space Total (in GB)"
+},
+
+{
+	"name":"Metadata Space Available",
+	"Type":"Integer",
+	"alias":"Metadata Space Available (in GB)"
+},
+
+{
+	"name":"Thin Pool Minimum Free Space",
+	"Type":"Integer",
+	"alias":"Thin Pool Minimum Free Space (in GB)"
+	
+},
+
+{
+	"name":"ID"
+	
+},
+{
+	"name":"Labels"
+	
+},
+
+{
+	"name":"Hostname",
+	"alias":"Container Hostname"
+	
+},
+{
+	"name":"State"
+	
+	
+},
+{
+	"name":"MemTotal",
+	"alias":"Total Memory"
+	
+},
+{
+	"name":"Reserved Memory"
+	
+},
+
+
+{
+	"name":"rx_dropped",
+	"alias":"Dropped Packets during Receive"
+	
+},
+{
+	"name":"tx_packets",
+	"alias":"Packets Sent"
+	
+},
+{
+	"name":"Memory (in MB)"
+	
+},
+{
+	"name":"tx_dropped",
+	"alias":"Dropped Packets during Sent"
+	
+},
+{
+	"name":"tx_errors",
+	"alias":"Errors Sent"
+	
+},
+{
+	"name":"rx_errors",
+	"alias":"Errors Received"
+	
+},
+{
+	"name":"rx_packets",
+	"alias":"Packets Received"
+	
+	
+},
+
+{
+	"name":"usage",
+	"alias":"Memory (in MB)"
+	
+},
+
+{
+	"name":"Name"
+},
+{
+	"name":"Labels",
+	"Type":"String"
+},
+{
+	"name":"Status"
+},
+{
+	"name":"IP"
+},
+
+{
+	"name":"Error"
+	
+},
+{
+	"name":"Reserved CPUs"
+	
+},
+{
+	"name":"read",
+	"alias":"Last Update Time"
+	
+},
+
+{
+	"name":"Memory %"
+	
+},
+
+{
+	"name":"UpdatedAt",
+	"alias":"Last Update Time"
+	
+},
+
+{
+	"name":"Command"
+	
+},
+
+{
+	"name":"Created (string)"
+	
+},
+{
+	"name":"CPU %"
+	
+},
+{
+	"name":"Id"
+	
+},
+
+{
+	"name":"ID",
+	"alias":"Id"
+	
+},
+
+{
+	"name":"Image"
+	
+},
+{
+	"name":"Current Status"
+	
+},
+{
+	"name":"IndexServerAddress"
+	
+},
+{
+	"name":"OperatingSystem"
+	
+},
+{
+	"name":"limit",
+	"alias":"Total Memory",
+	"Type":"Long"
+	
+},
+{
+	"name":"NEventsListener",
+	"alias":"Number of Events Listener",
+	"Type":"Integer"
+	
+},
+{
+	"name":"ServerVersion",
+	"alias":"ServerVersion"
+	
+},
+{
+	"name":"DockerRootDir",
+	"alias":"DockerRootDir",
+	"Type":"String"
+	
+},
+{
+	"name":"ContainersRunning",
+	"alias":"Running Container",
+	"Type":"Integer"
+	
+},
+{
+	"name":"ContainersPaused",
+	"alias":"Paused Container",
+	"Type":"Integer"
+	
+},
+{
+	"name":"ContainersStopped",
+	"alias":"Stopped Container",
+	"Type":"Integer"
+	
+},
+
+{
+	"name":"Containers",
+	"alias":"Total Containers",
+	"Type":"Integer"
+},
+
+{
+	"name":"NCPU",
+	"alias":"No of CPU",
+	"Type":"Integer"
+	
+},
+
+{
+	"name":"Images",
+	"alias":"Total Images",
+	"Type":"Integer"
+	
+},
+
+{
+	"name":"SystemTime",
+	"alias":"Last Update Time",
+	"Type":"Date"
+	
+},
+
+{
+	"name":"Nodes",
+	"alias":"Total Nodes",
+	"Type":"Integer"
+},
+
+{
+	"name":"rx_bytes",
+	"alias":"Bytes Received"
+},
+{
+	"name":"tx_bytes",
+	"alias":"Bytes Sent"
+}
+
+]
