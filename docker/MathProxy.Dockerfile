@@ -17,9 +17,9 @@ COPY MathProxy.war $CATALINA_HOME/webapps/
 RUN cd webapps \
   && unzip -d MathProxy MathProxy.war \
   && sed -Ei "s/simpleport=.*/simpleport=8080/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
-  && sed -Ei "s/simplehost=.*/simplehost=mathsimplebackend/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
+  && sed -Ei "s/simplehost=.*/simplehost=math_simple_backend/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
   && sed -Ei "s/complexport=.*/complexport=8080/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
-  && sed -Ei "s/complexhost=.*/complexhost=mathsimplebackend/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
+  && sed -Ei "s/complexhost=.*/complexhost=math_complex_backend/" $CATALINA_HOME/webapps/MathProxy/WEB-INF/classes/mathapp.properties \
   && rm MathProxy.war
 
 # configure CA APM java agent

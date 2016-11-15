@@ -17,7 +17,7 @@ COPY MathClient.war $CATALINA_HOME/webapps/
 RUN cd webapps \
   && unzip -d MathClient MathClient.war \
   && sed -Ei "s/port=.*/port=8080/" $CATALINA_HOME/webapps/MathClient/WEB-INF/classes/mathapp.properties \
-  && sed -Ei "s/host=.*/host=mathproxy/" $CATALINA_HOME/webapps/MathClient/WEB-INF/classes/mathapp.properties \
+  && sed -Ei "s/host=.*/host=math_roxy/" $CATALINA_HOME/webapps/MathClient/WEB-INF/classes/mathapp.properties \
   && rm MathClient.war
 
 COPY tomcat-users.xml $CATALINA_HOME/conf
