@@ -10,11 +10,11 @@ services:
   lb:
     image: dockercloud/haproxy
     links:
-      - mathclient
+      - math_client
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "80:80"
+      - "8080:80"
 
   math_client:
     image: mathapp_client
@@ -43,7 +43,7 @@ services:
     hostname: math_simple_backend
 
   math_complex_backend:
-    image: math_complex_backend
+    image: mathapp_complex_backend
     environment:
       - HEAP="2048m"
       - EM_HOST=192.168.10.50

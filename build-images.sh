@@ -3,6 +3,8 @@ path=$(pwd)
 
 mathapp=/apps/mathapp/apache-tomcat-8.0.33
 
+# instead of copying the files locally you can get MathApp from https://github.com/hrahmed/mathapp-java 
+
 cp $mathapp/MathClient/webapps/MathClient.war .
 cp $mathapp/MathProxy/webapps/MathProxy.war .
 cp $mathapp/MathSimpleBackend/webapps/MathSimpleBackend.war .
