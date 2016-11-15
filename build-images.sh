@@ -1,9 +1,9 @@
 #!/bin/bash
-path=$(pwd)
+cd docker
 
 mathapp=/apps/mathapp/apache-tomcat-8.0.33
 
-# instead of copying the files locally you can get MathApp from https://github.com/hrahmed/mathapp-java 
+# instead of copying the files locally you can get MathApp from https://github.com/hrahmed/mathapp-java
 
 cp $mathapp/MathClient/webapps/MathClient.war .
 cp $mathapp/MathProxy/webapps/MathProxy.war .
@@ -22,3 +22,5 @@ docker build -f MathSimpleBackend.Dockerfile -t mathapp_simple_backend .
 
 echo "Building MathComplexBackend image"
 docker build -f MathComplexBackend.Dockerfile -t mathapp_complex_backend .
+
+cd ..
